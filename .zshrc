@@ -20,7 +20,7 @@ alias lb="git branch"
 alias bb="git stash save && git checkout"
 alias rm="git fetch && git checkout -b"
 alias ss="git status"
-alias stage="git pushtostaging"
+alias stage="git push -f staging"
 alias rebase="git pull --rebase origin master"
 
 # Use brewed vi
