@@ -22,11 +22,15 @@ alias ss="git status"
 alias stage="git pushtostaging"
 alias rebase="git pull --rebase origin master"
 
+# Use brewed vi
+alias vi="/usr/local/bin/vim"
+alias vim="/usr/local/bin/vim"
+
 # Ascii Aliases
-alias anowl="cat ~/.ascii-owl"
-alias aturtle="cat ~/.ascii-turtle"
-alias asquirrel="cat ~/.ascii-squirrel"
-alias aredsquirrel='echo -e "\e[1;31m$(<~/.ascii-squirrel)\e[0m"'
+alias anowl="cat ~/.ascii/owl"
+alias aturtle="cat ~/.ascii/turtle"
+alias asquirrel="cat ~/.ascii/squirrel"
+alias aredsquirrel='echo -e "\e[1;31m$(<~/.ascii/squirrel)\e[0m"'
 # Bind asciiart to err
 trap aturtle ERR
 
