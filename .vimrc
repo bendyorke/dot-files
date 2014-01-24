@@ -27,6 +27,7 @@ Bundle 'helino/vim-json'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-cucumber'
+Bundle 'Shougo/neocomplete.vim'
  
 " Usability Bundles
 Bundle 'terryma/vim-multiple-cursors'
