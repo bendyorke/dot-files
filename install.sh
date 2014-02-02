@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # save variables
-dir=~/dotfiles              
-olddir=~/dotfiles_old      
+dir=~/dot-files              
+olddir=~/dot-files_archive      
 files="bashrc vimrc vim zshrc oh-my-zsh tmux.conf"    
 
 ##########
