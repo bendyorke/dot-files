@@ -41,11 +41,16 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map ff <C-w>\|<C-w>_
-map fh <C-w>hff
-map fj <C-w>jff
-map fk <C-w>kff
-map fl <C-w>lff
+map fh <C-w>h<C-w>\|
+map fj <C-w>j<C-w>_
+map fk <C-w>k<C-w>_
+map fl <C-w>l<C-w>\|
 map f= <C-w>=
+
+" Utility
+nnoremap cil ^C
 
 vnoremap <S-TAB> <gv
 vnoremap <TAB> >gv
+
+cmap w!! w !sudo tee %
