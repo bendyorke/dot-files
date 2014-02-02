@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/benyorke/.rbenv'
+let g:netrw_dirhist_2='/Users/benyorke/Ruby/DevBootCamp/spotlight/app/views/posts'
+let g:netrw_dirhist_3='/Users/benyorke/.rbenv/versions/1.9.3-p429/lib/ruby/1.9.1'
+let g:netrw_dirhist_4='/Users/benyorke/.rbenv/versions/1.9.3-p429/lib/ruby/1.9.1/psych'
+let g:netrw_dirhist_5='/Users/benyorke/Ruby/DevBootCamp/herokuflow/config'
+let g:netrw_dirhist_6='/Users/benyorke/Ruby/DevBootCamp/herokuflow/app/views/herokus'
