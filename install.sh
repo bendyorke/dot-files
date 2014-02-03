@@ -3,7 +3,7 @@
 # save variables
 dir=~/dot-files              
 olddir=~/dot-files_archive      
-files="bashrc vimrc vim zshrc oh-my-zsh tmux.conf"    
+files=".bashrc .vimrc .vim .zshrc .oh-my-zsh .tmux.conf"    
 
 ##########
 
@@ -22,7 +22,7 @@ for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/$olddir/
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -s $dir/$file ~/$file
 done
 
 install_zsh () {
