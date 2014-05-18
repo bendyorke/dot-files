@@ -1,4 +1,8 @@
-syntax on
+" solarized color scheme!
+syntax enable
+set background=dark
+let g:solarized_termtrans=1
+colorscheme solarized
 
 set expandtab
 set tabstop=2
@@ -10,11 +14,18 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 set nocompatible              " be iMproved
 filetype off                  " required!
 
+set dir=~/.vim/swap//
+set backupdir=~/.vim/swap//
+
+" Use <Space> as leader
+let mapleader = "\<Space>"
+
+" Set up vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles Here
@@ -27,25 +38,70 @@ Bundle 'helino/vim-json'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-cucumber'
-Bundle 'Shougo/neocomplete.vim'
- 
+Bundle 'wavded/vim-stylus'
+Bundle 'digitaltoad/vim-jade'
+
 " Usability Bundles
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'terryma/vim-expand-region'
 Bundle 'kien/ctrlp.vim'
+Bundle 'Shougo/neocomplete.vim'
+Bundle 'rking/ag.vim'
+Bundle 'junegunn/goyo.vim'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
+Bundle 'skalnik/vim-vroom'
 
 filetype plugin indent on     " required!
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" Airline config
+set laststatus=2
+let g:airline_theme='lucius'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_z=''
+let g:airline_enable_branch=1
+let g:airline_branch_prefix='⭠'
+let g:airline_section_c='%t'
+"
+" Goyo config
+function! s:goyo_before()
+  set nonumber
+endfunction
+function! s:goyo_after()
+  set number
+endfunction
+let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
+nnoremap <Leader>G :Goyo<CR>
+
+" Strip whitespace
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " Navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map ff <C-w>\|<C-w>_
-map fh <C-w>h<C-w>\|
-map fj <C-w>j<C-w>_
-map fk <C-w>k<C-w>_
-map fl <C-w>l<C-w>\|
-map f= <C-w>=
+map <Leader>_ <C-w>\|<C-w>_
+map <Leader>h <C-w>h<C-w>\|
+map <Leader>j <C-w>j<C-w>_
+map <Leader>k <C-w>k<C-w>_
+map <Leader>l <C-w>l<C-w>\|
+map <Leader>= <C-w>=
+nnoremap <CR> G
+nnoremap <BS> gg
+nnoremap <Leader>t :tabedit<Space>
+nnoremap <Leader>n :tabnext<CR>
+nnoremap <Leader>b :tabprev<CR>
 
 " Utility
 nnoremap cil ^C
@@ -53,4 +109,33 @@ nnoremap cil ^C
 vnoremap <S-TAB> <gv
 vnoremap <TAB> >gv
 
+inoremap {<cr> {<cr>}<c-o>O
+inoremap (<cr> (<cr>)<c-o>O<tab>
+inoremap [<cr> [<cr>]<c-o>O<tab>
+inoremap ({<cr> ({<cr>})<c-o>O
+inoremap {<space> {<space><space>}<left><left>
+inoremap (<space> (<space><space>)<left><left>
+inoremap [<space> [<space><space>]<left><left>
+inoremap ({<space> ({<space><space>})<left><left><left>
+inoremap {{<space> {{<space><space>}}<left><left><left>
+inoremap {{=<space> {{=<space><space>}}<left><left><left>
+inoremap {{{<space> {{{<space><space>}}<left><left><left>
+inoremap {{#<space> {{#<space><space>}}<left><left><left>
+inoremap {{/<space> {{/<space><space>}}<left><left><left>
+inoremap {{&<space> {{&<space><space>}}<left><left><left>
+inoremap <%<space> <%<space><space>%><left><left><left>
+inoremap <%=<space> <%=<space><space>%><left><left><left>
+
+" Speed
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+nmap <Leader>v <C-v>
+
+" System fixes
+inoremap <D-v> ^O:set paste<CR>^R*^O:set nopaste<CR>
 cmap w!! w !sudo tee %
+cmap src source ~/.vimrc
