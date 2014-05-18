@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # save variables
-dir=~/dot-files              
-olddir=~/dot-files_archive      
-files=".vimrc .vim .zshrc .tmux.conf .ascii"    
+dir=~/dot-files
+olddir=~/dot-files_archive
+files=".vimrc .vim .zshrc .tmux.conf .ascii"
 
 ##########
 # move into dir
@@ -59,4 +59,6 @@ fi
 }
 
 install_zsh
+
+cp ender.zsh-theme ~/.oh-my-zsh/themes/ender.zsh-theme
 
