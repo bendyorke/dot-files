@@ -38,7 +38,3 @@ battery() {
   echo $bat_flag
 }
 
-function precmd {
-  RPROMPT=$(check -z);
-}
-
