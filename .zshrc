@@ -65,3 +65,6 @@ source /etc/environment
 
 eval "$(rbenv init -)"
 
+function precmd {
+  RPROMPT=$(check -z);
+}
