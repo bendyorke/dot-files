@@ -18,7 +18,7 @@ set dir=~/.vim/swap//
 set backupdir=~/.vim/swap//
 
 " Use <Space> as leader
-let mapleader = "\<Space>"
+" let mapleader = "\<Space>"
 
 " Set up vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -50,7 +50,7 @@ Bundle 'rking/ag.vim'
 Bundle 'junegunn/goyo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
-Bundle 'skalnik/vim-vroom'
+Bundle 'benmills/vimux'
 
 filetype plugin indent on     " required!
 
@@ -66,7 +66,7 @@ let g:airline_section_z=''
 let g:airline_enable_branch=1
 let g:airline_branch_prefix='⭠'
 let g:airline_section_c='%t'
-"
+
 " Goyo config
 function! s:goyo_before()
   set nonumber
@@ -77,6 +77,21 @@ endfunction
 let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
 nnoremap <Leader>G :Goyo<CR>
 
+" Tslime/vim-rspec config
+" let g:rspec_command = 'call Send_to_Tmux("bx rspec {spec} || return 0 Enter")'
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader><Space> :call RunLastSpec()<CR>
+" map <Leader>r :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
+
+" Vimux config
+map <Leader><Space>  :VimuxPromptCommand<CR>
+map <Leader><Leader> :VimuxRunLastCommand<CR>
+map <Leader>x        :VimuxCloseRunner<CR>
+map <Leader>a        :call VimuxRunCommand('Enter')<CR>
+
 " Strip whitespace
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
@@ -84,24 +99,24 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
-autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map <Leader>_ <C-w>\|<C-w>_
-map <Leader>h <C-w>h<C-w>\|
-map <Leader>j <C-w>j<C-w>_
-map <Leader>k <C-w>k<C-w>_
-map <Leader>l <C-w>l<C-w>\|
-map <Leader>= <C-w>=
+map <Space>_ <C-w>\|<C-w>_
+map <Space>h <C-w>h<C-w>\|
+map <Space>j <C-w>j<C-w>_
+map <Space>k <C-w>k<C-w>_
+map <Space>l <C-w>l<C-w>\|
+map <Space>= <C-w>=
 nnoremap <CR> G
 nnoremap <BS> gg
-nnoremap <Leader>t :tabedit<Space>
-nnoremap <Leader>n :tabnext<CR>
-nnoremap <Leader>b :tabprev<CR>
+nnoremap <Space>t :tabedit<Space>
+nnoremap <Space>n :tabnext<CR>
+nnoremap <Space>b :tabprev<CR>
 
 " Utility
 nnoremap cil ^C
@@ -113,29 +128,30 @@ inoremap {<cr> {<cr>}<c-o>O
 inoremap (<cr> (<cr>)<c-o>O<tab>
 inoremap [<cr> [<cr>]<c-o>O<tab>
 inoremap ({<cr> ({<cr>})<c-o>O
-inoremap {<space> {<space><space>}<left><left>
-inoremap (<space> (<space><space>)<left><left>
-inoremap [<space> [<space><space>]<left><left>
-inoremap ({<space> ({<space><space>})<left><left><left>
-inoremap {{<space> {{<space><space>}}<left><left><left>
-inoremap {{=<space> {{=<space><space>}}<left><left><left>
-inoremap {{{<space> {{{<space><space>}}<left><left><left>
-inoremap {{#<space> {{#<space><space>}}<left><left><left>
-inoremap {{/<space> {{/<space><space>}}<left><left><left>
-inoremap {{&<space> {{&<space><space>}}<left><left><left>
-inoremap <%<space> <%<space><space>%><left><left><left>
-inoremap <%=<space> <%=<space><space>%><left><left><left>
+inoremap {<Space> {<Space><Space>}<left><left>
+inoremap (<Space> (<Space><Space>)<left><left>
+inoremap [<Space> [<Space><Space>]<left><left>
+inoremap ({<Space> ({<Space><Space>})<left><left><left>
+inoremap {{<Space> {{<Space><Space>}}<left><left><left>
+inoremap {{=<Space> {{=<Space><Space>}}<left><left><left>
+inoremap {{{<Space> {{{<Space><Space>}}<left><left><left>
+inoremap {{#<Space> {{#<Space><Space>}}<left><left><left>
+inoremap {{/<Space> {{/<Space><Space>}}<left><left><left>
+inoremap {{&<Space> {{&<Space><Space>}}<left><left><left>
+inoremap <%<Space> <%<Space><Space>%><left><left><left>
+inoremap <%=<Space> <%=<Space><Space>%><left><left><left>
 
 " Speed
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
-nmap <Leader>v <C-v>
+vmap <Space>y "+y
+vmap <Space>d "+d
+nmap <Space>p "+p
+nmap <Space>P "+P
+vmap <Space>p "+p
+vmap <Space>P "+P
+nmap <Space>/ 0<C-v>
+nmap <Space>v 0<C-v>
 
 " System fixes
-inoremap <D-v> ^O:set paste<CR>^R*^O:set nopaste<CR>
+inoremap <D-v> ^O:set paste<CR><Esc>"*p:set nopaste<CR>a
 cmap w!! w !sudo tee %
 cmap src source ~/.vimrc

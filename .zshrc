@@ -1,5 +1,10 @@
+# 10.10 git path fix
+[[ $(env|grep -c PATH) < 2 ]] || /bin/bash -c /bin/zsh
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+
+export PATH=/usr/local/bin:$PATH
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -19,24 +24,29 @@ alias vb="vi +BundleInstall +qall"
 alias tc="./.tmux.configuration"
 alias rar="grep -R -H --exclude-dir={log,.git,tmp,node_modules}"
 alias tovim="cut -d':' -f1 |xargs vim"
-alias bx="bundle exec"
+alias bx="nocorrect bundle exec"
+alias sweep="rm ~/.vim/swap/*"
+
+# Git Aliases
+alias gc="git commit --verbose"
 alias nb="git stash save && git checkout master && git pull origin master && git checkout -b"
 alias lb="git branch"
 alias bb="git stash save && git checkout"
 alias rb="git fetch && git checkout -b"
 alias ss="git status"
-alias stage="git pushtostaging"
+alias stage="git push -f staging"
 alias rebase="git pull --rebase origin master"
-alias sweep="rm ~/.vim/swap/*"
 
 # Directory Aliases
-alias box="cd ~/blue_otter/Boxbee"
-alias prog="cd ~/progress/progress-api"
+alias prog="cd ~/Code/Progress/progress-api"
 alias arti="cd ~/Node/progress/node_modules/artisan-pg"
 alias rab="cd ~/Node/apprabbit"
 alias lbake="./node_modules/artisan-pg/bin/bake.bin.js"
-alias perf="cd ~/blue_otter/HGSTTesting"
 alias vanity="cd ~/Ruby/DevBootCamp/Jobs/vanity"
+
+# Lolz Aliases
+alias gains="bx thin start -p 1111"
+alias gain="rails c"
 
 # Pairing Alias
 alias dop="echo $PAIR_PASS | pbcopy && ssh root@$PAIR_IP"
@@ -61,10 +71,14 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-source /etc/environment
+# source /etc/environment
 
 eval "$(rbenv init -)"
 
-function precmd {
-  RPROMPT=$(check -z);
-}
+# function precmd {
+#   RPROMPT=$(check -z);
+# }
+
+# Export color for tmux
+export TERM=screen-256color
+

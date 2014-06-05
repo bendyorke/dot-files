@@ -19,7 +19,7 @@ battery() {
   local bat=$(pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d ';' | tr -d ' ')
   local char=$(pmset -g batt | sed -n '2p' | cut -f2 -d ';' | tr -d ' ')
   case $char in
-    'ACattached'|'charging')
+    'ACattached'|'charging'|'charged'|'finishing charge')
       case $bat in
         100*)         local bat_flag="%{$fg[green]%}℥ %{$reset_color%}";;
         *)            local bat_flag="$bat %{$fg[green]%}﹪%{$reset_color%}";;
@@ -27,7 +27,7 @@ battery() {
       ;;
     'discharging')
       case $bat in
-        100*)         local bat_flag="℥ $%{reset_color%}";;
+        100*)         local bat_flag="℥ %{$reset_color%}";;
         [2-9][0-9]*)  local bat_flag="$bat ﹪";;
         1[0-9]*)      local bat_flag="%{$fg[yellow]%}$bat ﹪%{$reset_color%}";;
         [5-9][^0-9]*) local bat_flag="%{$fg[red]%}$bat ﹪%{$reset_color%}";;
