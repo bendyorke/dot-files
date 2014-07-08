@@ -106,7 +106,7 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map <Space>_ <C-w>\|<C-w>_
+map <Space><Leader> <C-w>\|<C-w>_
 map <Space>h <C-w>h<C-w>\|
 map <Space>j <C-w>j<C-w>_
 map <Space>k <C-w>k<C-w>_

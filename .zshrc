@@ -12,6 +12,9 @@ export PATH=/usr/local/bin:$PATH
 # time that oh-my-zsh is loaded.
 ZSH_THEME="ender"
 
+# vim `rar`
+vr() { vim `rar $1 ${2:-.} | cut -d ':' -f1 | uniq` +/$1 }
+
 # Config Aliases
 alias sz="source ~/.zshrc"
 alias se=". ./.env"
@@ -19,16 +22,17 @@ alias vi="vim"
 alias vz="vi ~/.zshrc"
 alias vv="vi ~/.vimrc"
 alias vb="vi +BundleInstall +qall"
+alias xx="chmod +x"
 
 # Workflow Aliases
-alias tc="./.tmux.configuration"
 alias rar="grep -R -H --exclude-dir={log,.git,tmp,node_modules}"
 alias tovim="cut -d':' -f1 |xargs vim"
 alias bx="nocorrect bundle exec"
 alias sweep="rm ~/.vim/swap/*"
 
 # Git Aliases
-alias gc="git commit --verbose"
+alias aa="git add -p"
+alias cc="git commit --verbose"
 alias nb="git stash save && git checkout master && git pull origin master && git checkout -b"
 alias lb="git branch"
 alias bb="git stash save && git checkout"
@@ -82,3 +86,6 @@ eval "$(rbenv init -)"
 # Export color for tmux
 export TERM=screen-256color
 
+export TMUX_COMMAND="./.tmux Enter"
+
+source ~/.gitflow.zsh
