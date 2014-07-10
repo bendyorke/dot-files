@@ -120,6 +120,9 @@ nnoremap <Space>b :tabprev<CR>
 
 " Utility
 nnoremap cil ^C
+vnoremap <Space>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r
+vnoremap <Leader>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>
+nnoremap <Leader>r "rdd@r
 
 vnoremap <S-TAB> <gv
 vnoremap <TAB> >gv
