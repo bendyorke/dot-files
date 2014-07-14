@@ -75,7 +75,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-# source /etc/environment
+source /etc/environment
 
 eval "$(rbenv init -)"
 

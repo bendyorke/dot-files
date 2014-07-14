@@ -99,7 +99,10 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+if !empty($VI_IGNORE_WHITESPACE)
+  autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+endif
 
 " Navigation
 map <C-h> <C-w>h
