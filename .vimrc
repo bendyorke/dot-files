@@ -156,8 +156,8 @@ vnoremap <Space>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10
 vnoremap <Leader>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>
 nnoremap <Leader>r "rdd@r
 nnoremap <Space>n <C-w>f
-" needs work nnoremap <Space>e gf!
 nnoremap <Space>v :vertical wincmd f<CR>
+" nnoremap <Space>e gf! (needs work)
 
 " System fixes
 inoremap <D-v> ^O:set paste<CR><Esc>"*p:set nopaste<CR>a
