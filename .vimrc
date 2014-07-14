@@ -114,9 +114,9 @@ map <Space>l <C-w>l<C-w>\|
 map <Space>= <C-w>=
 nnoremap <CR> G
 nnoremap <BS> gg
-nnoremap <Space>t :tabedit<Space>
-nnoremap <Space>n :tabnext<CR>
-nnoremap <Space>b :tabprev<CR>
+nnoremap <Leader>t :tabedit<Space>
+nnoremap <Leader>n :tabnext<CR>
+nnoremap <Leader>b :tabprev<CR>
 
 " Utility
 nnoremap cil ^C
@@ -150,6 +150,14 @@ vmap <Space>p "+p
 vmap <Space>P "+P
 nmap <Space>/ 0<C-v>
 nmap <Space>v 0<C-v>
+
+" Nav
+vnoremap <Space>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r
+vnoremap <Leader>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>
+nnoremap <Leader>r "rdd@r
+nnoremap <Space>n <C-w>f
+nnoremap <Space>v :vertical wincmd f<CR>
+" nnoremap <Space>e gf! (needs work)
 
 " System fixes
 inoremap <D-v> ^O:set paste<CR><Esc>"*p:set nopaste<CR>a
