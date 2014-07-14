@@ -86,6 +86,6 @@ eval "$(rbenv init -)"
 # Export color for tmux
 export TERM=screen-256color
 
-export TMUX_COMMAND="./.tmux Enter"
+export TMUX_COMMAND="'./.tmux 2>/dev/null || set exit code 0' Enter C-l"
 
 source ~/.gitflow.zsh

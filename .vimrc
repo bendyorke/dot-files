@@ -119,6 +119,7 @@ nnoremap <CR> G
 nnoremap <BS> gg
 nnoremap <Leader>t :tabedit<Space>
 nnoremap <Leader>n :tabnext<CR>
+nnoremap <Leader>p :tabnext<CR>
 nnoremap <Leader>b :tabprev<CR>
 
 " Utility
