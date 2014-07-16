@@ -16,25 +16,29 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 battery() {
-  local bat=$(pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d ';' | tr -d ' ')
-  local char=$(pmset -g batt | sed -n '2p' | cut -f2 -d ';' | tr -d ' ')
-  case $char in
-    'ACattached'|'charging'|'charged'|'finishing charge')
-      case $bat in
-        100*)         local bat_flag="%{$fg[green]%}℥ %{$reset_color%}";;
-        *)            local bat_flag="$bat %{$fg[green]%}﹪%{$reset_color%}";;
-      esac
-      ;;
-    'discharging')
-      case $bat in
-        100*)         local bat_flag="℥ %{$reset_color%}";;
-        [2-9][0-9]*)  local bat_flag="$bat ﹪";;
-        1[0-9]*)      local bat_flag="%{$fg[yellow]%}$bat ﹪%{$reset_color%}";;
-        [5-9][^0-9]*) local bat_flag="%{$fg[red]%}$bat ﹪%{$reset_color%}";;
-        [0-4][^0-9]*) local bat_flag="%{$fg[red]%}$bat ﹪";;
-      esac
-      ;;
-  esac
-  echo $bat_flag
+  if type "$pmset" > /dev/null; then
+    local bat=$(pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d ';' | tr -d ' ')
+    local char=$(pmset -g batt | sed -n '2p' | cut -f2 -d ';' | tr -d ' ')
+    case $char in
+      'ACattached'|'charging'|'charged'|'finishing charge')
+        case $bat in
+          100*)         local bat_flag="%{$fg[green]%}℥ %{$reset_color%}";;
+          *)            local bat_flag="$bat %{$fg[green]%}﹪%{$reset_color%}";;
+        esac
+        ;;
+      'discharging')
+        case $bat in
+          100*)         local bat_flag="℥ %{$reset_color%}";;
+          [2-9][0-9]*)  local bat_flag="$bat ﹪";;
+          1[0-9]*)      local bat_flag="%{$fg[yellow]%}$bat ﹪%{$reset_color%}";;
+          [5-9][^0-9]*) local bat_flag="%{$fg[red]%}$bat ﹪%{$reset_color%}";;
+          [0-4][^0-9]*) local bat_flag="%{$fg[red]%}$bat ﹪";;
+        esac
+        ;;
+    esac
+    echo $bat_flag
+  else
+    echo "⛅️"
+  fi
 }
 

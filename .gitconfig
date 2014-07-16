@@ -86,6 +86,6 @@
   default = tracking
 [core]
 	editor = /usr/bin/vim
-	excludesfile = /Users/benyorke/.gitignore_global
+	excludesfile = ~/.gitignore
 [rerere]
 	enabled = true
