@@ -54,6 +54,8 @@ Bundle 'benmills/vimux'
 
 filetype plugin indent on     " required!
 
+set wildmenu
+
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
@@ -104,6 +106,11 @@ if !empty($VI_IGNORE_WHITESPACE)
   autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 endif
 
+" WrapWith
+" fun! WrapWith(wrapper)
+"   exe ':s/\(.*\)/'.wrapper.'\1'.wrapper.'/'
+" endfun
+
 " Navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -121,6 +128,9 @@ nnoremap <Leader>t :tabedit<Space>
 nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>p :tabnext<CR>
 nnoremap <Leader>b :tabprev<CR>
+nnoremap <Leader>] :bn<CR>
+nnoremap <Leader>[ :bp<CR>
+nnoremap <Space>e :Explore<CR>
 
 " Utility
 nnoremap cil ^C
@@ -154,14 +164,17 @@ vmap <Space>p "+p
 vmap <Space>P "+P
 nmap <Space>/ 0<C-v>
 nmap <Space>v 0<C-v>
-
+ 
 " Nav
-vnoremap <Space>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r
-vnoremap <Leader>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>
+vnoremap <Space>r yGo<C-O>mr!rar!<CR>:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r
+nnoremap <Space>r viwyGo<C-O>mr!rar!<CR>:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r
+vnoremap <Leader>r yGo<C-O>mr!rar!<CR>:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>
 nnoremap <Leader>r "rdd@r
 nnoremap <Space>n <C-w>f
 nnoremap <Space>v :vertical wincmd f<CR>
 " nnoremap <Space>e gf! (needs work)
+nnoremap dr mmG?!rar!<CR>dG'm
+
 
 " System fixes
 inoremap <D-v> ^O:set paste<CR><Esc>"*p:set nopaste<CR>a
