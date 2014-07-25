@@ -16,6 +16,7 @@ ZSH_THEME="ender"
 rar() { grep -R -H --exclude-dir={log,.git,tmp,node_modules} $1 ${2:-.} }
 vr() { vim `rar $1 | cut -d ':' -f1 | uniq` +/$1 }
 hh() { ssh ${1:-pair}@pairbear.co }
+rsp() { bundle exec rspec --color $@ || set exit code 0 }
 
 # Config Aliases
 alias sz="source ~/.zshrc"

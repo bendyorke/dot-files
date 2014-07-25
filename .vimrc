@@ -10,6 +10,7 @@ set shiftwidth=2
 set bs=2
 set number
 set timeout timeoutlen=3000 ttimeoutlen=100
+set scrolloff=4
 
 set nocompatible              " be iMproved
 filetype off                  " required!
@@ -51,6 +52,7 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'benmills/vimux'
+Bundle 'mhinz/vim-startify'
 
 filetype plugin indent on     " required!
 
@@ -58,6 +60,22 @@ set wildmenu
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" Startify config
+let g:startify_custom_header=[
+\ '',
+\ '',
+\ '   |',
+\ '   |',
+\ '   |  To see the world, things dangerous to come to;',
+\ '   |            to see behind walls, to draw closer;',
+\ '   |                to find each other, and to feel.',
+\ '   |                    That is the purpose of life.',
+\ '   |',
+\ '   |',
+\ '',
+\ '',
+\ ]
 
 " Airline config
 set laststatus=2
