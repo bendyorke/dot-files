@@ -111,6 +111,7 @@ map <Leader><Space>  :VimuxPromptCommand<CR>
 map <Leader><Leader> :VimuxRunLastCommand<CR>
 map <Leader>x        :VimuxCloseRunner<CR>
 map <Leader>a        :call VimuxRunCommand('Enter')<CR>
+map <Leader>u        :call VimuxRunCommand('up')<CR>
 
 " Strip whitespace
 fun! <SID>StripTrailingWhitespaces()
