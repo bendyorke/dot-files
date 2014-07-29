@@ -100,7 +100,7 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-if !empty($VI_IGNORE_WHITESPACE)
+if empty($VI_IGNORE_WHITESPACE)
   autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 endif
 
@@ -120,6 +120,8 @@ nnoremap <BS> gg
 nnoremap <Leader>t :tabedit<Space>
 nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>b :tabprev<CR>
+nnoremap <Leader>[ :bp<CR>
+nnoremap <Leader>] :bn<CR>
 
 " Utility
 nnoremap cil ^C
