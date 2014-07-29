@@ -13,7 +13,10 @@ export PATH=/usr/local/bin:$PATH
 ZSH_THEME="ender"
 
 # vim `rar`
-vr() { vim `rar $1 ${2:-.} | cut -d ':' -f1 | uniq` +/$1 }
+rar() { grep -R -H --exclude-dir={log,.git,tmp,node_modules} $1 ${2:-.} }
+vr() { vim `rar $1 | cut -d ':' -f1 | uniq` +/$1 }
+hh() { ssh ${1:-pair}@pairbear.co }
+rsp() { bundle exec rspec --color $@ || set exit code 0 }
 
 # Config Aliases
 alias sz="source ~/.zshrc"
@@ -25,7 +28,7 @@ alias vb="vi +BundleInstall +qall"
 alias xx="chmod +x"
 
 # Workflow Aliases
-alias rar="grep -R -H --exclude-dir={log,.git,tmp,node_modules}"
+alias t="todo --task-dir /usr/local/lib/tasks --list tasks --delete-if-empty"
 alias tovim="cut -d':' -f1 |xargs vim"
 alias bx="nocorrect bundle exec"
 alias sweep="rm ~/.vim/swap/*"
@@ -51,9 +54,6 @@ alias vanity="cd ~/Ruby/DevBootCamp/Jobs/vanity"
 # Lolz Aliases
 alias gains="bx thin start -p 1111"
 alias gain="rails c"
-
-# Pairing Alias
-alias dop="echo $PAIR_PASS | pbcopy && ssh root@$PAIR_IP"
 
 # Long commands
 alias hosts="dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
@@ -86,6 +86,6 @@ eval "$(rbenv init -)"
 # Export color for tmux
 export TERM=screen-256color
 
-export TMUX_COMMAND="./.tmux Enter"
+export TMUX_COMMAND="'./.tmux 2>/dev/null || set exit code 0' Enter C-l"
 
 source ~/.gitflow.zsh

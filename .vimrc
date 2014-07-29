@@ -10,6 +10,7 @@ set shiftwidth=2
 set bs=2
 set number
 set timeout timeoutlen=3000 ttimeoutlen=100
+set scrolloff=4
 
 set nocompatible              " be iMproved
 filetype off                  " required!
@@ -19,6 +20,15 @@ set backupdir=~/.vim/swap//
 
 " Use <Space> as leader
 " let mapleader = "\<Space>"
+
+" Change cursor on insert mode
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
 " Set up vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -51,11 +61,30 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'benmills/vimux'
+Bundle 'mhinz/vim-startify'
 
 filetype plugin indent on     " required!
 
+set wildmenu
+
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" Startify config
+let g:startify_custom_header=[
+\ '',
+\ '',
+\ '   |',
+\ '   |',
+\ '   |  To see the world, things dangerous to come to;',
+\ '   |            to see behind walls, to draw closer;',
+\ '   |                to find each other, and to feel.',
+\ '   |                    That is the purpose of life.',
+\ '   |',
+\ '   |',
+\ '',
+\ '',
+\ ]
 
 " Airline config
 set laststatus=2
@@ -91,6 +120,7 @@ map <Leader><Space>  :VimuxPromptCommand<CR>
 map <Leader><Leader> :VimuxRunLastCommand<CR>
 map <Leader>x        :VimuxCloseRunner<CR>
 map <Leader>a        :call VimuxRunCommand('Enter')<CR>
+map <Leader>u        :call VimuxRunCommand('up')<CR>
 
 " Strip whitespace
 fun! <SID>StripTrailingWhitespaces()
@@ -103,6 +133,11 @@ endfun
 if empty($VI_IGNORE_WHITESPACE)
   autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 endif
+
+" WrapWith
+" fun! WrapWith(wrapper)
+"   exe ':s/\(.*\)/'.wrapper.'\1'.wrapper.'/'
+" endfun
 
 " Navigation
 map <C-h> <C-w>h
@@ -119,9 +154,11 @@ nnoremap <CR> G
 nnoremap <BS> gg
 nnoremap <Leader>t :tabedit<Space>
 nnoremap <Leader>n :tabnext<CR>
+nnoremap <Leader>p :tabnext<CR>
 nnoremap <Leader>b :tabprev<CR>
-nnoremap <Leader>[ :bp<CR>
 nnoremap <Leader>] :bn<CR>
+nnoremap <Leader>[ :bp<CR>
+nnoremap <Space>e :Explore<CR>
 
 " Utility
 nnoremap cil ^C
@@ -157,12 +194,15 @@ nmap <Space>/ 0<C-v>
 nmap <Space>v 0<C-v>
 
 " Nav
-vnoremap <Space>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r
-vnoremap <Leader>r yGo:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>
+vnoremap <Space>r yGo<C-O>mr!rar!<CR>:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r
+nnoremap <Space>r viwyGo<C-O>mr!rar!<CR>:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r
+vnoremap <Leader>r yGo<C-O>mr!rar!<CR>:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>
 nnoremap <Leader>r "rdd@r
 nnoremap <Space>n <C-w>f
 nnoremap <Space>v :vertical wincmd f<CR>
 " nnoremap <Space>e gf! (needs work)
+nnoremap dr mmG?!rar!<CR>dG'm
+
 
 " System fixes
 inoremap <D-v> ^O:set paste<CR><Esc>"*p:set nopaste<CR>a
