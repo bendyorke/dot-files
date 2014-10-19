@@ -3,6 +3,8 @@ syntax enable
 set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
+cmap sl set background=light
+cmap sd set background=dark
 
 set expandtab
 set tabstop=2
@@ -38,7 +40,7 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-" My Bundles Here
+" Syntax Bundles
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
@@ -50,6 +52,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-cucumber'
 Bundle 'wavded/vim-stylus'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'Keithbsmiley/swift.vim'
 
 " Usability Bundles
 Bundle 'terryma/vim-multiple-cursors'
@@ -61,7 +64,6 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'benmills/vimux'
-Bundle 'mhinz/vim-startify'
 
 filetype plugin indent on     " required!
 
