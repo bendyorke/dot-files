@@ -22,3 +22,8 @@ hh() {
 rsp() {
   bundle exec rspec --color $@ || set exit code 0
 }
+
+# Switch network
+netloc() {
+  networksetup -switchtolocation ${1:-Automatic} > /dev/null && echo "Switched to network '${1:-Automatic}'" || echo "Network Location '${1:-Automatic} not found"
+}
