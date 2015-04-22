@@ -1,3 +1,4 @@
+# vi:syntax=zsh
 # Manual grep search against file names
 # Accepts 2 arguments, string to match (required) and directory to search in (default: .)
 rar() {

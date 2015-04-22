@@ -14,13 +14,13 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export TMUX_COMMAND="'./.tmux 2>/dev/null || set exit code 0' Enter C-l"
 
 # Build Path
-source ~/.files/path.zsh
+source ~/.files/path
 
 # Assign Aliases
-source ~/.files/alias.zsh
+source ~/.files/alias
 
 # Declare functions
-source ~/.files/function.zsh
+source ~/.files/functions
 
 # Bind asciiart to err --- requires alias for agreenturtle
 trap agreenturtle ERR

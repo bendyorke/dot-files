@@ -1,1 +1,2 @@
+# vim:syntax=zsh
 export PATH=/usr/local/bin:$PATH

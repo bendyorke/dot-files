@@ -1,3 +1,4 @@
+# vi:syntax=zsh
 # Config Aliases
 alias sz="source ~/.zshrc"
 alias se=". ./.env"
