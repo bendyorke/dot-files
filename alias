@@ -5,6 +5,7 @@ alias se=". ./.env"
 alias vi="vim"
 alias vz="vi ~/.zshrc"
 alias vv="vi ~/.vimrc"
+alias va="vi ~/.files/alias"
 alias vb="vi +BundleInstall +qall"
 alias xx="chmod +x"
 
@@ -13,6 +14,7 @@ alias t="todo --task-dir /usr/local/lib/tasks --list tasks --delete-if-empty"
 alias tovim="cut -d':' -f1 |xargs vim"
 alias bx="nocorrect bundle exec"
 alias sweep="rm ~/.vim/swap/*"
+alias dock='boot2docker up && $(boot2docker shellinit)'
 
 # Git Aliases
 alias aa="git add -p"

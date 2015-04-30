@@ -25,5 +25,17 @@ rsp() {
 
 # Switch network
 netloc() {
-  networksetup -switchtolocation ${1:-Automatic} > /dev/null && echo "Switched to network '${1:-Automatic}'" || echo "Network Location '${1:-Automatic} not found"
+  scutil --nc list | grep ${2:-VPN} >/dev/null && vpn stop
+  sudo networksetup -switchtolocation ${1:-Automatic} > /dev/null && echo "Switched to network '${1:-Automatic}'" || echo "Network Location '${1:-Automatic}' not found"
+  scutil --nc list | grep ${2:-VPN} >/dev/null && sleep 3 && vpn start
+}
+
+# VPM start/stop
+vpn() {
+  (scutil --nc $1 ${2:-VPN} && scutil --nc status ${2:-VPN}) | head -n 1
+}
+
+# Move to challenge and grunt watch
+grunt_localbuild_and_watch_challenge() {
+  cms && cd clients/$1 && grunt localbuild watch
 }
