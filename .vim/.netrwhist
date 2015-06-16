@@ -1,7 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/byorke/project/adclient_cms/clients/dudeperfect/app/components'
-let g:netrw_dirhist_2='/Users/byorke/project/adclient_cms/clients/dudeperfect/app/components/leaderboard'
-let g:netrw_dirhist_3='/Users/byorke/project/adclient_cms/clients/dudeperfect/app/components'
-let g:netrw_dirhist_4='/Users/byorke/project/adclient_cms/clients/dudeperfect/app/components/challenge'
-let g:netrw_dirhist_5='/Users/byorke/project/adclient_cms/clients/dudeperfect/app/components/joinModal'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/byorke/.files/.ascii'

@@ -22,8 +22,11 @@ source ~/.files/alias
 # Declare functions
 source ~/.files/functions
 
+# Source envs
+source ~/.env/mmf
+
 # Bind asciiart to err --- requires alias for agreenturtle
-trap agreenturtle ERR
+trap turtles ERR
 
 # Source oh-my-zsh
 source $ZSH/oh-my-zsh.sh

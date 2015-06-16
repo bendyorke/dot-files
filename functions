@@ -32,10 +32,28 @@ netloc() {
 
 # VPM start/stop
 vpn() {
-  (scutil --nc $1 ${2:-VPN} && scutil --nc status ${2:-VPN}) | head -n 1
+  (scutil --nc ${1:-start} ${2:-VPN} && scutil --nc status ${2:-VPN}) | head -n 1
 }
 
 # Move to challenge and grunt watch
 grunt_localbuild_and_watch_challenge() {
-  cms && cd clients/$1 && grunt localbuild watch
+  cha $1 && grunt localbuild watch
+}
+
+# Give file executble permissions and run it
+xxx() {
+  chmod +x $1 && $1
+}
+
+# CD into challenge
+cha() {
+  cms && cd clients/${1:-angular}
+}
+
+# Display random turtles across the screen
+turtles() {
+  local cols=$(tput cols)
+  local begin=$(( RANDOM % (320 - $cols + 1) ))
+  local end=$(($begin + $cols - 1))
+  echo -e "\e[0;32m$(cut -c$begin-$end ~/.files/.ascii/turtles)\e[0m"
 }

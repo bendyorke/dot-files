@@ -7,8 +7,8 @@ cmap sl set background=light
 cmap sd set background=dark
 
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set bs=2
 set number
 set timeout timeoutlen=3000 ttimeoutlen=100
@@ -161,6 +161,7 @@ nnoremap <Leader>b :tabprev<CR>
 nnoremap <Leader>] :bn<CR>
 nnoremap <Leader>[ :bp<CR>
 nnoremap <Space>e :Explore<CR>
+cmap lb ls<CR> :b
 
 " Utility
 nnoremap cil ^C

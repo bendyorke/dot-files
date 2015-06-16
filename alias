@@ -14,7 +14,10 @@ alias t="todo --task-dir /usr/local/lib/tasks --list tasks --delete-if-empty"
 alias tovim="cut -d':' -f1 |xargs vim"
 alias bx="nocorrect bundle exec"
 alias sweep="rm ~/.vim/swap/*"
-alias dock='boot2docker up && $(boot2docker shellinit)'
+alias dkc="docker-compose"
+alias btd="boot2docker"
+alias dock='btd up && $(btd shellinit)'
+alias redock='btd delete && btd init && btd up && $(btd shellinit)'
 
 # Git Aliases
 alias aa="git add -p"
@@ -29,6 +32,8 @@ alias rebase="git pull --rebase origin master"
 
 # Directory Aliases
 alias cms="cd ~/project/adclient_cms"
+alias pnm="cd ~/project/panama"
+alias doc="cd ~/project/docs"
 
 # Lolz Aliases
 alias gains="bx thin start -p 1111"
