@@ -35,6 +35,13 @@ vpn() {
   (scutil --nc ${1:-start} ${2:-VPN} && scutil --nc status ${2:-VPN}) | head -n 1
 }
 
+# Copy ENV variable to clipboard
+ce() {
+  local upper=$(echo "${1:-open_vpn_password}" | tr '[:lower:]' '[:upper:]')
+  eval "local value=\$$upper"
+  echo "$value" | pbcopy
+}
+
 # Move to challenge and grunt watch
 grunt_localbuild_and_watch_challenge() {
   cha $1 && grunt localbuild watch
