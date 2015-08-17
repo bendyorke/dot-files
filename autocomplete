@@ -1,0 +1,12 @@
+#
+# BEFORE USING RUN:
+# $ brew install zsh-completions
+#
+# Adds some default autocomplete functions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# cha completion to list directories in cha
+_cha() {
+  compadd `ls ~/project/adclient_cms/clients` install start build:local build:devint build:prod deploy:devint deploy:prod
+}
+compdef _cha cha

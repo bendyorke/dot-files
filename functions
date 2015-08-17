@@ -8,7 +8,7 @@ rar() {
 # Opens each file returned from rar into it's own vim buffer
 # Accepts 1 argument, string to match (required)
 vr() {
-  vim `rar $1 | cut -d ':' -f1 | uniq` +/$1
+  vim `rar $1 ${2:-.} | cut -d ':' -f1 | uniq` +/$1
 }
 
 # SSH into pairbear for different users.  Should be moved to ~/.ssh/config
@@ -39,7 +39,7 @@ vpn() {
 ce() {
   local upper=$(echo "${1:-open_vpn_password}" | tr '[:lower:]' '[:upper:]')
   eval "local value=\$$upper"
-  echo "$value" | pbcopy
+  echo -n "$value" | pbcopy
 }
 
 # Move to challenge and grunt watch
@@ -54,7 +54,10 @@ xxx() {
 
 # CD into challenge
 cha() {
-  cms && cd clients/${1:-angular}
+  cms && cd ~/project/adclient_cms/clients/${${@: -1}:-angular}
+  if [ "$#" -gt 1 ]; then
+    npm ${@:1: -1}
+  fi
 }
 
 # Display random turtles across the screen
