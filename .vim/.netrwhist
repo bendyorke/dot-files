@@ -1,6 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/benyorke/Work/pingboard/app/views/apps/envoys'
-let g:netrw_dirhist_2='/Users/benyorke/Work/pingboard/app/controllers/apps'
-let g:netrw_dirhist_3='/Users/benyorke/Work/pingboard/config'
-let g:netrw_dirhist_4='/Users/benyorke/Work/pingboard/app/models/concerns'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/byorke/.files'
+let g:netrw_dirhist_2='/Users/byorke/.files/oh-my-zsh'
+let g:netrw_dirhist_3='/Users/byorke/.files'

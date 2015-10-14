@@ -1,0 +1,69 @@
+# vi:syntax=zsh
+# Manual grep search against file names
+# Accepts 2 arguments, string to match (required) and directory to search in (default: .)
+rar() {
+  grep -R -H --exclude-dir={log,.git,tmp,node_modules} $1 ${2:-.}
+}
+
+# Opens each file returned from rar into it's own vim buffer
+# Accepts 1 argument, string to match (required)
+vr() {
+  vim `rar $1 ${2:-.} | cut -d ':' -f1 | uniq` +/$1
+}
+
+# SSH into pairbear for different users.  Should be moved to ~/.ssh/config
+# Accepts 1 argument, string to set user (default: pair)
+hh() {
+  ssh ${1:-pair}@pairbear.co
+}
+
+# Run rspec without failing error code
+# Accepts unlimited arguments
+rsp() {
+  bundle exec rspec --color $@ || set exit code 0
+}
+
+# Switch network
+netloc() {
+  scutil --nc list | grep ${2:-VPN} >/dev/null && vpn stop
+  sudo networksetup -switchtolocation ${1:-Automatic} > /dev/null && echo "Switched to network '${1:-Automatic}'" || echo "Network Location '${1:-Automatic}' not found"
+  scutil --nc list | grep ${2:-VPN} >/dev/null && sleep 3 && vpn start
+}
+
+# VPM start/stop
+vpn() {
+  (scutil --nc ${1:-start} ${2:-VPN} && scutil --nc status ${2:-VPN}) | head -n 1
+}
+
+# Copy ENV variable to clipboard
+ce() {
+  local upper=$(echo "${1:-open_vpn_password}" | tr '[:lower:]' '[:upper:]')
+  eval "local value=\$$upper"
+  echo -n "$value" | pbcopy
+}
+
+# Move to challenge and grunt watch
+grunt_localbuild_and_watch_challenge() {
+  cha $1 && grunt localbuild watch
+}
+
+# Give file executble permissions and run it
+xxx() {
+  chmod +x $1 && $1
+}
+
+# CD into challenge
+cha() {
+  cms && cd ~/project/adclient_cms/clients/${${@: -1}:-angular}
+  if [ "$#" -gt 1 ]; then
+    npm ${@:1: -1}
+  fi
+}
+
+# Display random turtles across the screen
+turtles() {
+  local cols=$(tput cols)
+  local begin=$(( RANDOM % (320 - $cols + 1) ))
+  local end=$(($begin + $cols - 1))
+  echo -e "\e[0;32m$(cut -c$begin-$end ~/.files/.ascii/turtles)\e[0m"
+}

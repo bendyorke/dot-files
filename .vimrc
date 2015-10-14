@@ -64,6 +64,7 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'benmills/vimux'
+Bundle 'mattn/emmet-vim'
 
 filetype plugin indent on     " required!
 
@@ -107,6 +108,8 @@ function! s:goyo_after()
 endfunction
 let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
 nnoremap <Leader>G :Goyo<CR>
+
+let g:user_emmet_leader_key='<Leader>,'
 
 " Tslime/vim-rspec config
 " let g:rspec_command = 'call Send_to_Tmux("bx rspec {spec} || return 0 Enter")'
@@ -161,6 +164,7 @@ nnoremap <Leader>b :tabprev<CR>
 nnoremap <Leader>] :bn<CR>
 nnoremap <Leader>[ :bp<CR>
 nnoremap <Space>e :Explore<CR>
+cmap lb ls<CR> :b
 
 " Utility
 nnoremap cil ^C
