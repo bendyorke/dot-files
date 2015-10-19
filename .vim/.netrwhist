@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/byorke/.files'
-let g:netrw_dirhist_2='/Users/byorke/.files/oh-my-zsh'
-let g:netrw_dirhist_3='/Users/byorke/.files'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/root/challoween/src/components'
+let g:netrw_dirhist_2='/root/challoween/src'
+let g:netrw_dirhist_3='/root/challoween/src/components'
+let g:netrw_dirhist_4='/root/challoween/src'
+let g:netrw_dirhist_5='/root/challoween'
+let g:netrw_dirhist_6='/root/challoween/src'
+let g:netrw_dirhist_7='/root/challoween/src/components'

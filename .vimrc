@@ -1,16 +1,13 @@
 " solarized color scheme!
 syntax enable
-set background=dark
-let g:solarized_termtrans=1
-colorscheme solarized
-cmap sl set background=light
-cmap sd set background=dark
+set number
+colorscheme lucario
+highlight clear
 
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set bs=2
-set number
 set timeout timeoutlen=3000 ttimeoutlen=100
 set scrolloff=4
 
@@ -33,39 +30,40 @@ else
 endif
 
 " Set up vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-" Syntax Bundles
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'helino/vim-json'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-cucumber'
-Bundle 'wavded/vim-stylus'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'Keithbsmiley/swift.vim'
+" Syntax Plugins
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'helino/vim-json'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-cucumber'
+Plugin 'wavded/vim-stylus'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'Keithbsmiley/swift.vim'
 
-" Usability Bundles
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'terryma/vim-expand-region'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'rking/ag.vim'
-Bundle 'junegunn/goyo.vim'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'benmills/vimux'
-Bundle 'mattn/emmet-vim'
+" Usability Plugins
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-expand-region'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'rking/ag.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'benmills/vimux'
+Plugin 'mattn/emmet-vim'
 
+call vundle#end()
 filetype plugin indent on     " required!
 
 set wildmenu
@@ -95,8 +93,8 @@ let g:airline_theme='lucius'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
-let g:airline_enable_branch=1
-let g:airline_branch_prefix='⭠'
+let g:airline#extentions#branch#enabled=1
+let g:airline_symbols#branch='⭠'
 let g:airline_section_c='%t'
 
 " Goyo config
@@ -198,6 +196,7 @@ vmap <Space>p "+p
 vmap <Space>P "+P
 nmap <Space>/ 0<C-v>
 nmap <Space>v 0<C-v>
+nmap <Space>y :call system('nc localhost 8377', @0)<CR>
 
 " Nav
 vnoremap <Space>r yGo<C-O>mr!rar!<CR>:r!ag<Space>"<Esc>pa"<Space>\|<Space>head<Space>-n<Space>10<Esc>"rdd@r

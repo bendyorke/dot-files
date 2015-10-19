@@ -26,7 +26,7 @@ source ~/.files/alias
 source ~/.files/functions
 
 # Source envs
-source ~/.env/mmf
+source ~/.env
 
 # Bind asciiart to err --- requires alias for agreenturtle
 trap turtles ERR
