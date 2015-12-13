@@ -1,9 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/root/challoween/src/components'
-let g:netrw_dirhist_2='/root/challoween/src'
-let g:netrw_dirhist_3='/root/challoween/src/components'
-let g:netrw_dirhist_4='/root/challoween/src'
-let g:netrw_dirhist_5='/root/challoween'
-let g:netrw_dirhist_6='/root/challoween/src'
-let g:netrw_dirhist_7='/root/challoween/src/components'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/root/toptal/src/css'
+let g:netrw_dirhist_2='/root/toptal/src/ui'
+let g:netrw_dirhist_3='/root/toptal/src'
+let g:netrw_dirhist_4='/root/toptal/src/css'

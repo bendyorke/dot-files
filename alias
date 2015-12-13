@@ -2,6 +2,11 @@
 # Config Aliases
 alias sz="source ~/.zshrc"
 alias se=". ./.env"
+alias nv="nvim"
+alias nn="nvim ~/.config/nvim/init.vim"
+alias na="nvim ~/.files/alias"
+alias ns="nvim ~/.config/nvim/snippets/javascript.snippets"
+alias nz="nvim ~/.zshrc"
 alias vi="vim"
 alias vz="vi ~/.zshrc"
 alias vv="vi ~/.vimrc"
@@ -12,7 +17,7 @@ alias xx="chmod +x"
 # Workflow Aliases
 alias tovim="cut -d':' -f1 |xargs vim"
 alias bx="nocorrect bundle exec"
-alias sweep="rm ~/.vim/swap/*"
+alias sweep="rm ~/.config/nvim/swap/*"
 alias dkc="docker-compose"
 alias btd="boot2docker"
 alias dock='btd up && $(btd shellinit)'

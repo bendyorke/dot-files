@@ -5,7 +5,10 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="ender"
 
 # ZSH plugins
-plugins=(git)
+# plugins+=(git)
+plugins+=(zsh-completions)
+autoload -U compinit && compinit
+# autoload -Uz _git && _git
 
 # Load rbenv if installed
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -29,10 +32,13 @@ source ~/.files/functions
 source ~/.env
 
 # Bind asciiart to err --- requires alias for agreenturtle
-trap turtles ERR
+# trap turtles ERR
 
 # Source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# Source autocomplete for cuntions before the functions
-source ~/.files/autocomplete
+# NVIM
+export NVM_DIR="/root/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
