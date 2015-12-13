@@ -2,6 +2,11 @@
 # Config Aliases
 alias sz="source ~/.zshrc"
 alias se=". ./.env"
+alias nv="nvim"
+alias nn="nvim ~/.config/nvim/init.vim"
+alias na="nvim ~/.files/alias"
+alias ns="nvim ~/.config/nvim/snippets/javascript.snippets"
+alias nz="nvim ~/.zshrc"
 alias vi="vim"
 alias vz="vi ~/.zshrc"
 alias vv="vi ~/.vimrc"
@@ -10,10 +15,9 @@ alias vb="vi +BundleInstall +qall"
 alias xx="chmod +x"
 
 # Workflow Aliases
-alias t="todo --task-dir /usr/local/lib/tasks --list tasks --delete-if-empty"
 alias tovim="cut -d':' -f1 |xargs vim"
 alias bx="nocorrect bundle exec"
-alias sweep="rm ~/.vim/swap/*"
+alias sweep="rm ~/.config/nvim/swap/*"
 alias dkc="docker-compose"
 alias btd="boot2docker"
 alias dock='btd up && $(btd shellinit)'
@@ -47,4 +51,4 @@ alias anowl="cat ~/.ascii/owl"
 alias aturtle="cat ~/.ascii/turtle"
 alias asquirrel="cat ~/.ascii/squirrel"
 alias aredsquirrel='echo -e "\e[1;31m$(<~/.ascii/squirrel)\e[0m"'
-alias agreenturtle='echo -e "\e[0;32m$(<~/.ascii/turtle)\e[0m"'
+alias agreenturtle='echo -e "\e[0;37m$(<~/.ascii/turtle)\e[0m"'

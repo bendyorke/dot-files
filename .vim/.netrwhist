@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/byorke/.files'
-let g:netrw_dirhist_2='/Users/byorke/.files/oh-my-zsh'
-let g:netrw_dirhist_3='/Users/byorke/.files'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/root/toptal/src/css'
+let g:netrw_dirhist_2='/root/toptal/src/ui'
+let g:netrw_dirhist_3='/root/toptal/src'
+let g:netrw_dirhist_4='/root/toptal/src/css'

@@ -1,3 +1,9 @@
 # vim:syntax=zsh
-export PATH=$(npm bin):$PATH
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# export PATH=$(npm bin):$PATH
 export PATH=/usr/local/bin:$PATH
+
+# linuxbrew
+export PATH=$HOME/.linuxbrew/bin:$PATH
+export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
+export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH

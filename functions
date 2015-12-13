@@ -67,3 +67,10 @@ turtles() {
   local end=$(($begin + $cols - 1))
   echo -e "\e[0;32m$(cut -c$begin-$end ~/.files/.ascii/turtles)\e[0m"
 }
+
+# Nest TMUX session in directory
+t() {
+  cd ${1:-.}
+  unset TMUX
+  tmux at -dt `basename $PWD` || tmux -2 new-session -s `basename $PWD`
+}
